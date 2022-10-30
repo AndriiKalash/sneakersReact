@@ -1,12 +1,9 @@
 import React from 'react';
-// import AppContext from '../context';
 import { Link } from "react-router-dom";
 import { useCart } from '../hooks/useCart'
 
 function Header(props) {
-    //передал эти 2 функции в файл hooks/useCart
-    // const { cartItems } = React.useContext(AppContext);
-    // const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+
     const { totalPrice } = useCart();
 
     return (

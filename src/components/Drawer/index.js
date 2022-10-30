@@ -9,26 +9,21 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function Drawer({ onClose, items = [], onRemove, opened }) {
 
-    // const { cartItems, setCartItems } = React.useContext(AppContext);
     const { cartItems, setCartItems, totalPrice } = useCart();
     const [orderId, setOrderId] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
     const [isOrderComplite, setIsOrderComplite] = React.useState(false);
-    // const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+
 
     //функция для оформления заказа
     const onClickOrder = async () => {
         try {
             setIsLoading(true);
             const { data } = await axios.post('https://62837a1092a6a5e46224964a.mockapi.io/orders', { items: cartItems });
-            // await axios.put('https://62837a1092a6a5e46224964a.mockapi.io/cart', []);//не работает
             setOrderId(data.id);
             setIsOrderComplite(true);
             setCartItems([]);
-            // cartItems.foreEach(item => {
-            //     axios.delete('https://62837a1092a6a5e46224964a.mockapi.io/cart', +item.id);
-            // });
-            //
+
             for (let i = 0; i < cartItems.length; i++) {
                 const item = cartItems[i];
                 await axios.delete('https://62837a1092a6a5e46224964a.mockapi.io/cart', + item.id);
@@ -42,7 +37,7 @@ function Drawer({ onClose, items = [], onRemove, opened }) {
     };
 
     return (
-        //   теперь корзина не удаляется , а просто скрыта 
+        //   корзина  скрыта 
         <div className={`${styles.overlay}  ${opened ? styles.overlayVisible : ''}`} >
             <div className={styles.drawer}>
                 <h2 className=" d-flex justify-between mb-30">Корзина<img onClick={onClose} className="removeBtn cu-p" src="img/btn-remove.svg" alt="close" /></h2>
