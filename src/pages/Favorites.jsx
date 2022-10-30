@@ -18,7 +18,6 @@ function Favorites() {
                         favorited={true}
                         onFavorite={onAddToFavorite}
                         {...item}
-
                     />
                 ))}
             </div>

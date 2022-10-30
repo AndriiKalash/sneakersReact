@@ -3,7 +3,7 @@ import ContentLoader from "react-content-loader"
 import AppContext from '../../context';
 import styles from './Card.module.scss';
 
-function Card({
+const Card = ({
     id,
     onFavorite,
     imageUrl,
@@ -11,30 +11,25 @@ function Card({
     price,
     onPlus,
     favorited = false,
-    // added = false,
     loading = false
-}) {
+}) => {
 
     const { isItemAdded } = React.useContext(AppContext);
     const [isFavorite, setIsFavorite] = React.useState(favorited);
     const obj = { id, parentId: id, title, imageUrl, price };
 
-    // console.log(title, isItemAdded(id));
-
     const onClickPlus = () => {
         onPlus(obj);
-
     };
 
     const onClickFavorite = () => {
         onFavorite(obj);
-
         setIsFavorite(!isFavorite);
     };
 
 
-
     return (
+
         <div className={styles.card}>
 
             {
@@ -77,12 +72,9 @@ function Card({
                                     onClick={onClickPlus}
                                     src={isItemAdded(id) ? "/img/btn-cheked.svg" : "/img/btn-plus.svg"} alt="plus" />
                             )}
-
                         </div>
                     </>
             }
-
-
         </div>
     );
 }

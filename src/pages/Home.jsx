@@ -1,17 +1,15 @@
 import React from 'react';
 import Card from '../components/Card';
-// import AppContext from '../context';
-function Home(
-    { items,
-        searchValue,
-        setSearchValue,
-        onAddToFavorite,
-        onAddToCart,
-        isLoading,
 
-    }
-) {
-    // const { isItemAdded } = React.useContext(AppContext);
+const Home = ({
+    items,
+    searchValue,
+    onsearchValue,
+    onAddToFavorite,
+    onAddToCart,
+    isLoading,
+
+}) => {
 
     const renderItems = () => {
 
@@ -24,7 +22,6 @@ function Home(
                     key={index}
                     onFavorite={(obj) => onAddToFavorite(obj)}
                     onPlus={(obj) => onAddToCart(obj)}
-                    // added={isItemAdded(item && item.id)}  убираю
                     loading={isLoading}
                     {...item}
                 />
@@ -37,8 +34,13 @@ function Home(
                 <h1 >{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кросовки'}</h1>
                 <div className="search-block d-flex">
                     <img src="img/search.svg" alt="Search" />
-                    {searchValue && <img onClick={() => setSearchValue('')} className="clear removeBtn" src="img/btn-remove.svg" alt="cleare" />}
-                    <input value={searchValue} name={searchValue} onChange={e => setSearchValue(e.target.value)} placeholder="Поиск..." type="text" />
+                    {searchValue && <img onClick={() => onsearchValue('')} className="clear removeBtn" src="img/btn-remove.svg" alt="cleare" />}
+                    <input
+                        value={searchValue}
+                        name={searchValue}
+                        onChange={(e) => onsearchValue(e.target.value)}
+                        placeholder="Поиск..." type="text"
+                    />
                 </div>
             </div>
 

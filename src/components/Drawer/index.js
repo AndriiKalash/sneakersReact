@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import Info from '../Info'
 import { useCart } from '../../hooks/useCart'
-
 import styles from './Drawer.module.scss'
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -80,35 +79,19 @@ function Drawer({ onClose, items = [], onRemove, opened }) {
                             <button disabled={isLoading} onClick={onClickOrder} className="greenButton">Оформить заказ <img src="img/arrow.svg" alt="arrow" /></button>
                         </div>
                     </div>
-
-
-                ) : (
-
-                    <Info
-                        title={isOrderComplite ? 'Заказ оформлен' : "Корзина пустая"}
-                        description={isOrderComplite ? `Ваш заказ #${orderId} передан в обработку` : "Добавьте хотя бы одну пару кроссовок, чтоб сделать заказ"}
-                        image={isOrderComplite ? "/img/order-complite.svg " : "/img/empty-cart.jpg"}
-                    />
-
-                    //а вот это теперь убтраем так как создал компонент Info (как и все компоненты доэтого)
-
-                    // <div className="cartEmpty d-flex align-center justify-content flex-column flex">
-                    //     <img className="mb-20" width={120} height={120} src="/img/empty-cart.jpg" alt="empty" />
-                    //     <h2>Корзина пустая</h2>
-                    //     <p className="opacity-6">Добавьте хотя бы одну пару кроссовок, чтоб сделать заказ</p>
-                    //     <button onClick={onClose} className="greenButton"><img src="/img/arrow-left.svg" alt="arrow" />Вернуться назад </button>
-                    // </div>
-
                 )
+                    :
+                    (
+                        <Info
+                            title={isOrderComplite ? 'Заказ оформлен' : "Корзина пустая"}
+                            description={isOrderComplite ? `Ваш заказ #${orderId} передан в обработку` : "Добавьте хотя бы одну пару кроссовок, чтоб сделать заказ"}
+                            image={isOrderComplite ? "/img/order-complite.svg " : "/img/empty-cart.jpg"}
+                        />
+                    )
                 }
-
-
-
-
 
             </div>
         </div>
-
     )
 }
 
