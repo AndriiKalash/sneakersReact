@@ -1,30 +1,38 @@
-import Card from './components/Card';
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import { LoadingSpinner} from './components';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
+import ModalRegistration  from './pages/ModalRagistration';
+import Home from './pages/Home';
+const Orders = lazy(() => import(/*webpackChunkName: "Orders"*/'./pages/Orders'));
+const Favorites = lazy(() => import(/*webpackChunkName: "Favorites"*/'./pages/Favorites'));
 
-function App() {
-  return (
-    <div className="wrapper  clear">
-      <Drawer />
-      <Header />
+const App = () => (
 
-      <div className="content p-40">
-        <div className="d-flex justify-between mb-40 align-center">
-          <h1 >Все кроссовки</h1>
-          <div className="search-block d-flex">
-            <img src="img/search.svg" alt="Search" />
-            <input placeholder="Поиск..." type="text" />
-          </div>
-        </div>
-        <div className="d-flex">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+  <div className="wrapper  clear">
+        <Drawer/>
+        <Header/>
+        <ModalRegistration/>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/orders" element={
+          <Suspense fallback={<LoadingSpinner/>}>
+            <Orders />
+          </Suspense>} />
+          <Route path="/favorites" element={
+          <Suspense fallback={<LoadingSpinner/>}>
+            <Favorites />
+          </Suspense> } />
+        </Routes>
       </div>
-    </div>
-  );
-}
+)
+
+
+      
+  
 
 export default App;
+
+

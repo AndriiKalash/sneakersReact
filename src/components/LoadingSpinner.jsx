@@ -1,0 +1,19 @@
+import { ColorRing } from  'react-loader-spinner'
+
+export const LoadingSpinner = () => (
+ <div  className="cartEmpty d-flex align-center " >
+    <ColorRing
+  visible={true}
+  height="280"
+  width="280"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+</div>
+);
+
+
+
+

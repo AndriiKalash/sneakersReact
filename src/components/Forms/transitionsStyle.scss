@@ -1,0 +1,44 @@
+.buttonPopup{
+   width: 7rem;
+   &:disabled{
+      background: #c6e6a0;
+   }
+}
+
+.input{
+   border: none;
+   font-size: 27px;
+   border-radius: 50px;
+   background-color: #ffffff;
+   margin: 10px 0 ;
+   width: 100%;
+   color: inherit;
+   resize: none;
+}
+label{
+   font-size: 24px;
+    color: #00124b;
+}
+.error{
+   color: red;
+}
+
+//cssTransition:
+.fade-enter{
+    opacity: 0;
+ }
+ .fade-exit{
+    opacity: 1;
+ }
+ .fade-enter-active{
+    opacity: 1;
+    transform: translateY(5%);
+ }
+ .fade-exit-active{
+    opacity: 0;
+    transform: translateY(100%);
+ }
+ .fade-enter-active,
+ .fade-exit-active{
+    transition: all 700ms;
+ }
