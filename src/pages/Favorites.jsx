@@ -6,8 +6,6 @@ import { favoritesSelector } from "../redux/favorites/favoritesSlice";
 import {Card} from '../components';
 
 
-
-
 const Favorites = () => {
     
     const {favoritesItems} = useSelector(favoritesSelector);

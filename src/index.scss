@@ -68,6 +68,16 @@ header {
     width: 18px;
     height: 18px;
   }
+  position: relative;
+
+  .clear {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(-50%, 70%);
+    width: 18px;
+    height: 18px;
+  }
 }
 
 input {
@@ -86,7 +96,21 @@ input {
     text-align: center;
 
   }
+  }
 
+  .greenButton {
+    position: relative;
+    margin-top: 20px;
+
+    &:disabled {
+      background-color: #bebebe;
+      cursor: default;
+    }
+
+    &:hover {
+      img {
+        transform: translateX(-5px);
+      }
   .greenButton {
     position: relative;
     margin-top: 20px;
@@ -102,6 +126,7 @@ input {
       }
 
     }
+    }
 
     img {
       position: absolute;
@@ -112,6 +137,15 @@ input {
 
     }
   }
+    img {
+      position: absolute;
+      right: 30px;
+      top: 20px;
+      transition: transform 0.15s ease-in-out;
+
+
+    }
+  
 }
 
 .items {
@@ -193,6 +227,8 @@ input {
 
 
     }
+
+
 
 
   }
